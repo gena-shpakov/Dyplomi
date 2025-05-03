@@ -1,0 +1,5 @@
+{
+  "watch": ["src/functions"],
+  "ext": "gs",
+  "exec": "npm run deploy"
+}
