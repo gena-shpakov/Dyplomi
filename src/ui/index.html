@@ -1,13 +1,35 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <title>Local Dev</title>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <title>Розклад</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Hello from Local Dev</h1>
-    <button id="clickMe">Click me</button>
+    <h1 id="day-name">Понеділок</h1>
+
+    <div class="days-menu">
+      <button class="day-button" data-day="Понеділок">Понеділок</button>
+      <button class="day-button" data-day="Вівторок">Вівторок</button>
+      <button class="day-button" data-day="Середа">Середа</button>
+      <button class="day-button" data-day="Четвер">Четвер</button>
+      <button class="day-button" data-day="П’ятниця">П’ятниця</button>
+      <button class="day-button" data-day="Субота">Субота</button>
+      <button class="day-button" data-day="Неділя">Неділя</button>
+    </div>
+
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>№ Пари</th>
+          <th>Назва пари</th>
+          <th>Час проведення</th>
+        </tr>
+      </thead>
+      <tbody id="schedule-body"></tbody>
+    </table>
+
     <script src="script.js"></script>
   </body>
 </html>
