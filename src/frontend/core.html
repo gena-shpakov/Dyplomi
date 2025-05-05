@@ -1,7 +1,39 @@
 <script>
-  function goToPart(part) {
-    const base =
-      "https://script.google.com/macros/s/AKfycbxVx_xnebO5LF4KQcKjBffiB11At_-yUW8BU8-8-TM/dev";
-    window.top.location.href = `${base}?part=${part}`;
+  function choosePart(part) {
+    localStorage.setItem("selectedPart", part);
+    renderView(part);
   }
+
+  function renderView(part) {
+    const view = document.getElementById("view");
+    const selection = document.getElementById("selection");
+
+    selection.style.display = "none";
+    view.innerHTML = `<p>Завантаження...</p>`;
+
+    google.script.run
+      .withSuccessHandler(function (html) {
+        view.innerHTML = `
+        <div style="margin-bottom: 20px;">
+          <button class="btn" onclick="resetPart()">🔄 Змінити вибір</button>
+        </div>
+        ${html}
+      `;
+      })
+      .loadPage(part);
+  }
+
+  function resetPart() {
+    localStorage.removeItem("selectedPart");
+    document.getElementById("selection").style.display = "flex";
+    document.getElementById("view").innerHTML = "";
+    history.pushState({}, "", location.pathname);
+  }
+
+  window.onload = () => {
+    const saved = localStorage.getItem("selectedPart");
+    if (saved) {
+      renderView(saved);
+    }
+  };
 </script>
