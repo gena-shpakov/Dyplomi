@@ -33,12 +33,58 @@
     border: none;
     cursor: pointer;
     text-decoration: none;
-    display: inline-block;
     text-align: center;
     transition: background-color 0.3s;
   }
 
   .btn:hover {
     background-color: #a79b90;
+  }
+
+  .schedule-table-container {
+    overflow-x: auto;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 10px;
+  }
+
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #bbb;
+  }
+
+  .schedule-table thead {
+    background-color: #eaeaea;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid #bbb;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .schedule-pair-title {
+    font-weight: 500;
+  }
+
+  .schedule-room {
+    color: #666;
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 600px) {
+    .schedule-table th,
+    .schedule-table td {
+      font-size: 14px;
+      padding: 8px 10px;
+    }
   }
 </style>

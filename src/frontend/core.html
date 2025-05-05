@@ -1,26 +1,87 @@
 <script>
+  const dataDrivenParts = ["lecturer", "student"];
+
   function choosePart(part) {
     localStorage.setItem("selectedPart", part);
-    renderView(part);
+    renderPart(part);
   }
 
-  function renderView(part) {
-    const view = document.getElementById("view");
+  function renderPart(part) {
     const selection = document.getElementById("selection");
+    const view = document.getElementById("view");
 
     selection.style.display = "none";
-    view.innerHTML = `<p>Завантаження...</p>`;
+    view.innerHTML = "<p>Завантаження...</p>";
 
-    google.script.run
-      .withSuccessHandler(function (html) {
-        view.innerHTML = `
-        <div style="margin-bottom: 20px;">
-          <button class="btn" onclick="resetPart()">🔄 Змінити вибір</button>
-        </div>
-        ${html}
-      `;
-      })
-      .loadPage(part);
+    if (dataDrivenParts.indexOf(part) !== -1) {
+      const days = [
+        "Неділя",
+        "Понеділок",
+        "Вівторок",
+        "Середа",
+        "Четвер",
+        "П’ятниця",
+        "Субота",
+      ];
+      const today = new Date();
+      const todayIndex = today.getDay();
+      const dayName =
+        todayIndex >= 1 && todayIndex <= 5 ? days[todayIndex] : "Понеділок";
+
+      google.script.run
+        .withSuccessHandler(function (data) {
+          if (!data || data.length === 0) {
+            view.innerHTML = `
+            <div style="margin-bottom: 20px;">
+              <button class="btn" onclick="resetPart()">🔄 Змінити вибір</button>
+            </div>
+            <p>Розкладу на ${dayName} немає.</p>`;
+            return;
+          }
+
+          let html = `
+          <div style="margin-bottom: 20px;">
+            <button class="btn" onclick="resetPart()">🔄 Змінити вибір</button>
+          </div>
+          <h2 style="margin-bottom: 10px;">Розклад на ${dayName}</h2>
+          <div class="schedule-table-container">
+            <table class="schedule-table">
+              <thead>
+                <tr>
+                  <th>№ Пари</th>
+                  <th>Назва пари та аудиторія</th>
+                  <th>Викладач</th>
+                </tr>
+              </thead>
+              <tbody>`;
+
+          data.forEach(function (row) {
+            html += `
+            <tr>
+                <td>${row[1]}</td>
+                <td>
+                  <div class="schedule-pair-title">${row[2]}</div>
+                  <div class="schedule-room">${row[4]}</div>
+                </td>
+                <td>${row[3]}</td>
+            </tr>`;
+          });
+
+          html += `</tbody></table></div>`;
+          view.innerHTML = html;
+        })
+        .getScheduleForDay(dayName);
+    } else {
+      google.script.run
+        .withSuccessHandler(function (html) {
+          view.innerHTML = `
+          <div style="margin-bottom: 20px;">
+            <button class="btn" onclick="resetPart()">🔄 Змінити вибір</button>
+          </div>
+          ${html}`;
+        })
+        .loadPage(part);
+    }
   }
 
   function resetPart() {
@@ -30,10 +91,10 @@
     history.pushState({}, "", location.pathname);
   }
 
-  window.onload = () => {
+  window.onload = function () {
     const saved = localStorage.getItem("selectedPart");
     if (saved) {
-      renderView(saved);
+      renderPart(saved);
     }
   };
 </script>
