@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack && node build.js",
+    "build": "node build.js",
     "watch": "chokidar 'src/**/*' -c 'npm run build'"
   },
   "keywords": [],
