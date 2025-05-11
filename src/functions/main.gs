@@ -1,5 +1,5 @@
 function doGet() {
-  return HtmlService.createTemplateFromFile("frontend/pages/main").evaluate();
+  return HtmlService.createTemplateFromFile("frontend/pages/main.html").evaluate();
 }
 
 function include(filename) {
