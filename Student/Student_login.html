@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Student/Student_login_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100;1,14..32,100&display=swap" rel="stylesheet">
+    <link type="image/x-icon" href="/Clock.png" rel="shortcut icon">
+    <title>Розклад</title>
+</head>
+<body>
+    <div class="header">
+        Студент - Вибір групи
+    </div>
+    
+    <div class="login-form">
+  <h2>Авторизація студента</h2>
+  <form id="loginForm">
+    <input type="text" id="groupName" name="groupName" list="groupList" placeholder="Введіть назву групи" required>
+    <datalist id="groupList"></datalist>
+
+    <button type="button" onclick="submitGroupLogin()">Увійти</button>
+  </form>
+  <div id="errorMessage" style="color: red; display: none;">Невірна або неіснуюча група.</div>
+</div>
+
+<script>
+  // Завантаження списку груп з Google Таблиці
+  function loadGroups() {
+    google.script.run.withSuccessHandler(function (data) {
+      let datalist = document.getElementById('groupList');
+      datalist.innerHTML = ""; // Очищуємо перед оновленням
+      data.forEach(function (group) {
+        let option = document.createElement('option');
+        option.value = group;
+        datalist.appendChild(option);
+      });
+    }).getStudentGroups(); // Функція Apps Script, яка повертає список груп
+  }
+
+  window.onload = loadGroups;
+
+  function submitGroupLogin() {
+    var groupName = document.getElementById('groupName').value;
+
+    // Перевірка назви групи
+    google.script.run
+      .withSuccessHandler(function (response) {
+        if (response === 'success') {
+          localStorage.setItem('studentGroup', groupName);
+          window.location.href = 'Student.html'; // Перехід на сторінку студента
+        } else {
+          document.getElementById('errorMessage').style.display = 'block';
+        }
+      })
+      .checkGroupLogin(groupName); // Функція Apps Script для перевірки групи
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+h1 {
+  font-size: 55px;
+  letter-spacing: 5px;
+  margin-bottom: 200px; /* Відступ від заголовка */
+}
+
+.Menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px; /* Відстань між кнопками */
+  margin-top: 20px; /* Відступ від заголовка */
+}
+
+.Menu button {
+  background-color: #A64B2A; 
+  color: #fff; 
+  border: none;
+  padding: 20px 35px; /* Збільшений розмір кнопок */
+  border-radius: 8px;
+  font-size: 25px; /* Збільшений розмір тексту */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.Menu button:hover {
+  background-color: #8A3A1A;
+}
+
+.Menu button:active {
+  transform: scale(0.95); 
+}
+
+.button-inactive {
+  background-color: #C9B8AA; 
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: not-allowed;
+  opacity: 0.6;
+}

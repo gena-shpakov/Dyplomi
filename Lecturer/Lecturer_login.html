@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Lecturer/Lecturer_login_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100;1,14..32,100&display=swap" rel="stylesheet">
+    <link type="image/x-icon" href="/Clock.png" rel="shortcut icon">
+    <title>Розклад</title>
+</head>
+<body>
+    <div class="header">
+        Викладач - Авторизація
+    </div>
+
+    <div class="login-form">
+        <h2>Авторизація</h2>
+        <form id="loginForm">
+            <input type="text" id="username" name="username" list="surnameList" placeholder="Введіть прізвище" required>
+            <datalist id="surnameList"></datalist>
+
+            <button type="button" onclick="submitLogin()">Увійти</button>
+        </form>
+        <div id="errorMessage" style="color: red; display: none;">Невірний логін або пароль.</div>
+    </div>
+
+    <script>
+        // Функція для завантаження списку прізвищ з Google Таблиці
+        function loadSurnames() {
+            google.script.run.withSuccessHandler(function(data) {
+                let datalist = document.getElementById('surnameList');
+                datalist.innerHTML = ""; // Очищаємо список перед оновленням
+                data.forEach(function(surname) {
+                    let option = document.createElement('option');
+                    option.value = surname;
+                    datalist.appendChild(option);
+                });
+            }).getTeacherSurnames(); // Викликає функцію Apps Script
+        }
+
+        // Викликаємо завантаження прізвищ при завантаженні сторінки
+        window.onload = loadSurnames;
+
+        function submitLogin() {
+            var username = document.getElementById('username').value;
+
+            // Викликаємо Apps Script для перевірки логіну
+            google.script.run
+                .withSuccessHandler(function(response) {
+                    if (response === 'success') {
+                        localStorage.setItem('lecturerName', username);
+                        window.location.href = 'Lecturer.html'; // Перехід на головну сторінку
+                    } else {
+                        document.getElementById('errorMessage').style.display = 'block';
+                    }
+                })
+                .checkLogin(username); // Перевірка логіну
+        }
+    </script>
+</body>
+</html>
