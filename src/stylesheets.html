@@ -1,0 +1,140 @@
+<style>
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", serif;
+
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+
+h1 {
+  font-size: 55px;
+  letter-spacing: 5px;
+  margin-bottom: 200px; /* Відступ від заголовка */
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 30px;
+  max-width: 800px;
+  }
+
+.btn {
+  background-color: #A64B2A; 
+  color: #fff; 
+  border: none;
+  padding: 20px 35px; /* Збільшений розмір кнопок */
+  border-radius: 8px;
+  font-size: 25px; /* Збільшений розмір тексту */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .btn:hover {
+    background-color: #8A3A1A;
+  }
+  .btn:active{
+    transform: scale(0.95)
+  }
+
+  .schedule-table-container {
+    overflow-x: auto;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 10px;
+  }
+
+  .schedule-table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    color: black;
+  }
+
+  .schedule-table thead {
+    background-color: #eaeaea;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid #bbb;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .schedule-pair-title {
+    font-weight: 500;
+  }
+
+  .schedule-room {
+    color: #666;
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 600px) {
+    .schedule-table th,
+    .schedule-table td {
+      font-size: 14px;
+      padding: 8px 10px;
+    }
+  }
+
+.header {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 20px;
+}
+.header-title{
+  font-size: 24px;
+  margin-left: 20px;
+}
+
+.back-btn{
+  background-color: #A64B2A;
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 20px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.back-btn:hover{
+  background-color: #8A3A1A;
+}
+.back-btn:active{
+  transform: scale(0.95);
+}
+.btn-inactive {
+  background-color: #C9B8AA;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+</style>

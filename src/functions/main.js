@@ -1,5 +1,5 @@
 function doGet() {
-  return HtmlService.createTemplateFromFile("frontend/pages/main.html").evaluate();
+  return HtmlService.createTemplateFromFile("main.html").evaluate();
 }
 
 function include(filename) {
@@ -18,7 +18,7 @@ function loadPage(pageName) {
 
   if (allowed.indexOf(pageName) !== -1) {
     return HtmlService.createHtmlOutputFromFile(
-      "frontend/pages/" + pageName
+      pageName
     ).getContent();
   }
 

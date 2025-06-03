@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+  <base target="_top" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100;1,14..32,100&display=swap" rel="stylesheet">
+  <?!= include("stylesheets"); ?>
+  <title>Розклад</title>
+  </head>
+  <body>
+    <h1>Розклад</h1>
+
+    <div id="selection" class="button-container">
+      <a class="btn" onclick="choosePart('lecturer')">Викладач</a>
+      <a class="btn" onclick="choosePart('student')">Студент</a>
+    </div>
+
+    <div id="view" style="margin-top: 40px"></div>
+
+    <?!= include("core"); ?>
+
+  </body>
+</html>

@@ -33,7 +33,7 @@
           if (!data || data.length === 0) {
             view.innerHTML = `
             <div style="margin-bottom: 20px;">
-              <button class="btn" onclick="resetPart()">🔄 Змінити вибір</button>
+              <button class="back-btn" onclick="resetPart()">Назад</button>
             </div>
             <p>Розкладу на ${dayName} немає.</p>`;
             return;
@@ -41,7 +41,7 @@
 
           let html = `
           <div style="margin-bottom: 20px;">
-            <button class="btn" onclick="resetPart()">🔄 Змінити вибір</button>
+            <button class="back-btn" onclick="resetPart()">Назад</button>
           </div>
           <h2 style="margin-bottom: 10px;">Розклад на ${dayName}</h2>
           <div class="schedule-table-container">
@@ -76,7 +76,7 @@
         .withSuccessHandler(function (html) {
           view.innerHTML = `
           <div style="margin-bottom: 20px;">
-            <button class="btn" onclick="resetPart()">🔄 Змінити вибір</button>
+            <button class="back-btn" onclick="resetPart()">🔄 Змінити вибір</button>
           </div>
           ${html}`;
         })
