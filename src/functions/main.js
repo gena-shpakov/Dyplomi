@@ -14,6 +14,8 @@ function loadPage(pageName) {
     "practice",
     "substitutions",
     "attendance",
+    "lecturer_login",
+    "student_login"
   ];
 
   if (allowed.indexOf(pageName) !== -1) {
