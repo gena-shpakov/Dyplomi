@@ -10,10 +10,6 @@ function loadPage(pageName) {
   var allowed = [
     "lecturer",
     "student",
-    "exams",
-    "practice",
-    "substitutions",
-    "attendance",
     "lecturer_login",
     "student_login"
   ];

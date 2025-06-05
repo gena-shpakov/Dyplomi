@@ -1,5 +1,5 @@
 <script>
-  const dataDrivenParts = ["lecturer", "student"];
+  const dataDrivenParts = ["lecturer", "student", "lecturer_login", "student_login"];
 
   function choosePart(part) {
     localStorage.setItem("selectedPart", part);
@@ -43,31 +43,37 @@
           <div style="margin-bottom: 20px;">
             <button class="back-btn" onclick="resetPart()">Назад</button>
           </div>
-          <h2 style="margin-bottom: 10px;">Розклад на ${dayName}</h2>
-          <div class="schedule-table-container">
+          <div class="schedule-content" style="margin-top: 100px;">
+            <h1 id="currentDay" style="text-align: center;">Розклад на ${dayName}</h1>
+            <h2 id="numeratorDenominator" style="text-align: center;">Чисельник / Знаменник</h2>
             <table class="schedule-table">
               <thead>
                 <tr>
-                  <th>№ Пари</th>
-                  <th>Назва пари та аудиторія</th>
-                  <th>Викладач</th>
+                  <th>Пара</th>
+                  <th>Предмет</th>
+                  <th>Час</th>
                 </tr>
               </thead>
-              <tbody>`;
+              <tbody id="scheduleBody">`;
 
-          data.forEach(function (row) {
+            data.forEach(function (row) {
+              html += `
+                <tr>
+                  <td class="group-cell">${row[1]}</td>
+                  <td class="subject-cell">
+                    ${row[2]}
+                    <div class="teacher-room">${row[4]}</div>
+                  </td>
+                <td class="time-cell">${row[5]}</td>
+              </tr>`;
+            });
+
             html += `
-            <tr>
-                <td>${row[1]}</td>
-                <td>
-                  <div class="schedule-pair-title">${row[2]}</div>
-                  <div class="schedule-room">${row[4]}</div>
-                </td>
-                <td>${row[3]}</td>
-            </tr>`;
-          });
+                </tbody>
+              </table>
+            </div>`;
+          view.innerHTML = html;
 
-          html += `</tbody></table></div>`;
           view.innerHTML = html;
         })
         .getScheduleForDay(dayName);
@@ -76,7 +82,7 @@
         .withSuccessHandler(function (html) {
           view.innerHTML = `
           <div style="margin-bottom: 20px;">
-            <button class="back-btn" onclick="resetPart()">🔄 Змінити вибір</button>
+            <button class="back-btn" onclick="resetPart()">Назад</button>
           </div>
           ${html}`;
         })

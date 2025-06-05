@@ -1,5 +1,4 @@
 <style>
-
 * {
   margin: 0px;
   padding: 0px;
@@ -8,21 +7,26 @@
 
 body {
   font-family: "Inter", serif;
-
   background-color: antiquewhite;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
+}
+
+/* Заголовок і підзаголовок */
+h1 {
+  font-size: 48px;
+  letter-spacing: 4px;
+  margin-top: 80px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-
-h1 {
-  font-size: 55px;
-  letter-spacing: 5px;
-  margin-bottom: 200px; /* Відступ від заголовка */
+#numeratorDenominator {
+  font-size: 22px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .button-container {
@@ -31,110 +35,104 @@ h1 {
   justify-content: center;
   gap: 20px 30px;
   max-width: 800px;
-  }
+}
 
-.btn {
-  background-color: #A64B2A; 
-  color: #fff; 
-  border: none;
-  padding: 20px 35px; /* Збільшений розмір кнопок */
-  border-radius: 8px;
-  font-size: 25px; /* Збільшений розмір тексту */
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  }
-
-  .btn:hover {
-    background-color: #8A3A1A;
-  }
-  .btn:active{
-    transform: scale(0.95)
-  }
-
-  .schedule-table-container {
-    overflow-x: auto;
-    width: 100%;
-    max-width: 800px;
-    margin-top: 10px;
-  }
-
-  .schedule-table {
-    width: 90%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    color: black;
-  }
-
-  .schedule-table thead {
-    background-color: #eaeaea;
-  }
-
-  .schedule-table th,
-  .schedule-table td {
-    text-align: left;
-    padding: 10px 12px;
-    border: 1px solid #bbb;
-    white-space: nowrap;
-    vertical-align: middle;
-  }
-
-  .schedule-pair-title {
-    font-weight: 500;
-  }
-
-  .schedule-room {
-    color: #666;
-    font-size: 14px;
-    font-style: italic;
-  }
-
-  @media screen and (max-width: 600px) {
-    .schedule-table th,
-    .schedule-table td {
-      font-size: 14px;
-      padding: 8px 10px;
-    }
-  }
-
-.header {
-  font-size: 24px;
-  font-weight: bold;
-  padding: 20px;
+/* Кнопка Назад у верхньому правому куті */
+.back-btn {
   position: absolute;
-  top: 0;
-  left: 20px;
-}
-.header-title{
-  font-size: 24px;
-  margin-left: 20px;
-}
-
-.back-btn{
+  top: 20px;
+  right: 30px;
   background-color: #A64B2A;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin-right: 20px;
   transition: background-color 0.3s, transform 0.2s;
 }
-.back-btn:hover{
+
+.back-btn:hover {
   background-color: #8A3A1A;
 }
-.back-btn:active{
+
+.back-btn:active {
   transform: scale(0.95);
 }
-.btn-inactive {
-  background-color: #C9B8AA;
-  color: #fff;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 8px;
-  font-size: 20px;
-  cursor: not-allowed;
-  opacity: 0.6;
+
+.schedule-table-container {
+  overflow-x: auto;
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 10px;
 }
 
+.schedule-table {
+  width: 100%;
+  margin: 0 auto 50px;
+  border-collapse: collapse;
+  color: black;
+}
+
+.schedule-table th, .schedule-table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.schedule-table th {
+  background-color: #ddd;
+}
+
+.group-cell {
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+}
+
+.subject-cell {
+  font-size: 18px;
+  color: black;
+}
+
+.subject-cell .teacher-room {
+  font-size: 14px;
+  color: black;
+  margin-top: 5px;
+}
+
+.time-cell {
+  font-size: 16px;
+  color: black;
+}
+
+/* Мобільна адаптація */
+@media screen and (max-width: 768px) {
+  .schedule-table {
+    width: 95%;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  #numeratorDenominator {
+    font-size: 18px;
+  }
+
+  .back-btn {
+    font-size: 16px;
+    padding: 8px 16px;
+    right: 15px;
+  }
+}
 </style>
