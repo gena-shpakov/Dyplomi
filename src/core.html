@@ -67,14 +67,20 @@
               <tbody id="scheduleBody">`;
 
             data.forEach(function (row) {
+              const lessonNumber = row [1];
+              const subjects = row [2];
+              const teacher = row [3];
+              const room =  row [4];
+              const time = row [5];
+
               html += `
                 <tr>
-                  <td class="group-cell">${row[1]}</td>
+                  <td class="group-cell">${lessonNumber}</td>
                   <td class="subject-cell">
-                    ${row[2]}
-                    <div class="teacher-room">${row[4]}</div>
+                    <strong>${subjects}</strong><br>
+                    <span class="teacher-room">${teacher}, ауд.${room}</span>
                   </td>
-                <td class="time-cell">${row[5]}</td>
+                <td class="time-cell">${time}</td>
               </tr>`;
             });
 
