@@ -2,6 +2,11 @@
   const dataDrivenParts = ["lecturer", "student", "lecturer_login", "student_login"];
 
   function choosePart(part) {
+    const title = document.querySelector("h1");
+    if (title) {
+      title.style.display = "none";
+    }
+
     localStorage.setItem("selectedPart", part);
     renderPart(part);
   }
@@ -9,6 +14,11 @@
   function renderPart(part) {
     const selection = document.getElementById("selection");
     const view = document.getElementById("view");
+    const title = document.querySelector("h1");
+
+    if (title) {
+      title.style.display = "none";
+    }
 
     selection.style.display = "none";
     view.innerHTML = "<p>Завантаження...</p>";
@@ -50,7 +60,7 @@
               <thead>
                 <tr>
                   <th>Пара</th>
-                  <th>Предмет</th>
+                  <th>Предмет, викладач, аудиторія</th>
                   <th>Час</th>
                 </tr>
               </thead>
@@ -94,6 +104,12 @@
     localStorage.removeItem("selectedPart");
     document.getElementById("selection").style.display = "flex";
     document.getElementById("view").innerHTML = "";
+  
+    const title = document.querySelector("h1");
+    if (title) {
+      title.style.display = "block";
+    }
+    
     history.pushState({}, "", location.pathname);
   }
 
@@ -103,4 +119,14 @@
       renderPart(saved);
     }
   };
+  function goBack() {
+  // Показати заголовок
+  const title = document.querySelector("h1");
+  if (title) {
+    title.style.display = "block";
+  }
+
+  // Виклик повернення на головну
+  resetPart();
+}
 </script>
