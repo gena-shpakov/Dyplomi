@@ -21,7 +21,7 @@
     }
 
     selection.style.display = "none";
-    view.innerHTML = "<p>Завантаження...</p>";
+    view.innerHTML = '<p class="loading-text">Завантаження...</p>';
 
     if (dataDrivenParts.indexOf(part) !== -1) {
       const days = [
@@ -53,7 +53,7 @@
           <div style="margin-bottom: 20px;">
             <button class="back-btn" onclick="resetPart()">Назад</button>
           </div>
-          <div class="schedule-content" style="margin-top: 100px;">
+          <div class="schedule-content">
             <h1 id="currentDay" style="text-align: center;">Розклад на ${dayName}</h1>
             <h2 id="numeratorDenominator" style="text-align: center;">Чисельник / Знаменник</h2>
             <table class="schedule-table">
