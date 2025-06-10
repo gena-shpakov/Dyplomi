@@ -35,7 +35,7 @@ function getScheduleForDay(day) {
   return filtered;
 }
 
-// 🆕 Автоматичне оновлення розкладу з аркуша "Вхідні"
+// 🆕 Гнучкий парсер, що підтримує будь-який порядок колонок
 function processImportedData() {
   const ss = SpreadsheetApp.openById("1Pqx0UDzGQMjl6G0iZtcp5ftiv2YeuOQ8xqn6nYM3_A4");
   const rawSheet = ss.getSheetByName("Вхідні");
@@ -46,31 +46,43 @@ function processImportedData() {
   const rawData = rawSheet.getDataRange().getValues();
   if (rawData.length < 2) return;
 
+  const header = rawData[0].map(h => h.toString().toLowerCase().trim());
   const result = [];
 
-  rawData.slice(1).forEach(function(row) {
-    if (row.length < 6 || !row[0] || !row[1]) return;
+  const dayIndex = header.findIndex(h => h.includes("день"));
+  const pairIndex = header.findIndex(h => h.includes("пара") || h.includes("№"));
+  const subjectIndex = header.findIndex(h => h.includes("предмет"));
+  const teacherIndex = header.findIndex(h => h.includes("викладач"));
+  const roomIndex = header.findIndex(h => h.includes("ауд") || h.includes("кабінет"));
+  const timeIndex = header.findIndex(h => h.includes("час"));
 
+  if ([dayIndex, pairIndex, subjectIndex, teacherIndex, roomIndex, timeIndex].some(i => i === -1)) {
+    Logger.log("❌ Не знайдено всі необхідні колонки в аркуші 'Вхідні'");
+    return;
+  }
 
-    const day = row[0];
-    const pair = row[1];
-    const subject = row[2];
-    const teacher = row[3];
-    const room = row[4];
-    const time = row[5];
+  rawData.slice(1).forEach(row => {
+    const day = row[dayIndex];
+    const pair = row[pairIndex];
+    const subject = row[subjectIndex];
+    const teacher = row[teacherIndex];
+    const room = row[roomIndex];
+    const time = row[timeIndex];
 
-    result.push([day, pair, subject, teacher, room, time]);
+    if (day && pair && subject) {
+      result.push([day, pair, subject, teacher || "", room || "", time || ""]);
+    }
   });
 
-  // Очистити та оновити Лист1
   outputSheet.clear();
   outputSheet.appendRow(["День", "Пара", "Предмет", "Викладач", "Аудиторія", "Час"]);
+
   if (result.length > 0) {
     outputSheet.getRange(2, 1, result.length, 6).setValues(result);
   }
 }
 
-// 🆕 Автоматичний тригер — якщо адміністратор вставляє/редагує дані вручну
+// 🆕 Автоматичний тригер — якщо адміністратор вставляє або редагує "Вхідні"
 function onEdit(e) {
   const sheet = e.source.getActiveSheet();
   if (sheet.getName() === "Вхідні") {
