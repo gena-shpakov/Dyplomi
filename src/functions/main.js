@@ -35,4 +35,5 @@ function getScheduleForDay(day) {
   });
 
   return filtered;
+  
 }
