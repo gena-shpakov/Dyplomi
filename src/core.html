@@ -122,7 +122,7 @@
   window.onload = function () {
     localStorage.removeItem("selectedPart");
   };
-  
+
   function goBack() {
   // Показати заголовок
   const title = document.querySelector("h1");
@@ -133,4 +133,16 @@
   // Виклик повернення на головну
   resetPart();
 }
+
+function updateSchedule() {
+    google.script.run
+      .withSuccessHandler(function() {
+        alert("Розклад успішно оновлено!");
+      })
+      .withFailureHandler(function(error) {
+        alert("Помилка оновлення: " + error.message);
+      })
+      .processImportedData();
+  }
+
 </script>
