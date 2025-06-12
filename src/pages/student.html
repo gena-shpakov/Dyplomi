@@ -1,2 +1,28 @@
-<h1>Сторінка студентів</h1>
-<p>Керуйте дипломами студентів.</p>
+<div class="container">
+  <h1>Розклад студента</h1>
+
+  <select id="daySelect">
+    <option value="Понеділок">Понеділок</option>
+    <option value="Вівторок">Вівторок</option>
+    <option value="Середа">Середа</option>
+    <option value="Четвер">Четвер</option>
+    <option value="Пʼятниця">Пʼятниця</option>
+  </select>
+
+  <button id="loadSchedule">Показати розклад</button>
+
+  <table id="scheduleTable" border="1" style="margin-top: 20px; display: none">
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Предмет</th>
+        <th>Викладач</th>
+        <th>Аудиторія</th>
+        <th>Час</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button data-page="main">На головну</button>
+</div>
