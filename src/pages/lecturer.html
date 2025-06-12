@@ -1,5 +1,32 @@
 <div class="cotainer">
-  <h1 class="title">Викладач</h1>
-  <p id="lecturerName"></p>
-  <button data-page="main">На головну</button>
+  <h1 class="title">Розклад викладача</h1>
+
+  <p id="lecturerName" style="font-size: 18px; margin-bottom: 20px"></p>
+
+  <label for="daySelect">Оберіть день:</label>
+  <select id="daySelect">
+    <option value="Понеділок">Понеділок</option>
+    <option value="Вівторок">Вівторок</option>
+    <option value="Середа">Середа</option>
+    <option value="Четвер">Четвер</option>
+    <option value="Пʼятниця">Пʼятниця</option>
+  </select>
+
+  <button id="loadSchedule">Показати розклад</button>
+
+  <table id="scheduleTable" border="1" style="margin-top: 20px; display: none">
+    <thead>
+      <tr>
+        <th>День</th>
+        <th>Група</th>
+        <th>№</th>
+        <th>Предмет</th>
+        <th>Аудиторія</th>
+        <th>Час</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button data-page="main" style="margin-top: 20px">На головну</button>
 </div>

@@ -1,18 +1,33 @@
 export default function () {
-  const form = document.getElementById("teacherForm");
-  if (!form) return;
-  const validSurnames = ["Смагін", "Русін", "Трембовецька", "Сметанін"];
+  const form = document.getElementById("lecturerLoginForm");
+  const teacherSelect = document.getElementById("teacherSelect");
+  const errorMsg = document.getElementById("errorMsg");
+
+  // Отримати список викладачів з GAS
+  google.script.run
+    .withSuccessHandler((data) => {
+      teacherSelect.innerHTML = "";
+      data.teachers.forEach((teacher) => {
+        const option = document.createElement("option");
+        option.value = teacher;
+        option.textContent = teacher;
+        teacherSelect.appendChild(option);
+      });
+    })
+    .getLoginOptions();
+
+  // Обробка форми
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const surname = document.getElementById("surnameInput").value.trim();
-    const error = document.getElementById("errorMsg");
-    if (!surname) {
-      error.textContent = "Будь ласка, введіть прізвище.";
-    } else if (!validSurnames.includes(surname)) {
-      error.textContent = "Прізвище не знайдено. Спробуйте ще раз";
-    } else {
-      localStorage.setItem("surname", surname);
-      render("lecturer");
+
+    const teacher = teacherSelect.value;
+
+    if (!teacher) {
+      errorMsg.textContent = "Будь ласка, оберіть викладача.";
+      return;
     }
+
+    localStorage.setItem("teacher", teacher);
+    render("lecturer"); // Перехід до сторінки з розкладом викладача
   });
 }

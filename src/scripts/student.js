@@ -10,24 +10,30 @@ export default function () {
 
   button.addEventListener("click", () => {
     const day = select.value;
+    const group = localStorage.getItem("group");
+
+    if (!group) {
+      alert("Група не вказана. Перейдіть назад на логін.");
+      render("student_login");
+      return;
+    }
 
     google.script.run
       .withSuccessHandler((data) => {
-        console.log("Received data:", data);
         tbody.innerHTML = "";
 
         if (!data || data.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="5">Немає даних</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="5">Розклад не знайдено</td></tr>';
         } else {
           data.forEach((row) => {
             const tr = document.createElement("tr");
             tr.innerHTML = `
-                <td>${row[1]}</td>
-                <td>${row[2]}</td>
-                <td>${row[3]}</td>
-                <td>${row[4]}</td>
-                <td>${row[5]}</td>
-              `;
+              <td>${row.number}</td>
+              <td>${row.subject}</td>
+              <td>${row.teacher}</td>
+              <td>${row.room}</td>
+              <td>${row.time}</td>
+            `;
             tbody.appendChild(tr);
           });
         }
@@ -35,8 +41,8 @@ export default function () {
         table.style.display = "table";
       })
       .withFailureHandler((e) => {
-        alert("Помилка при завантаженні розкладу: " + e.message);
+        alert("Помилка при завантаженні: " + e.message);
       })
-      .getScheduleForDay(day);
+      .getScheduleForGroupAndDay(group, day);
   });
 }

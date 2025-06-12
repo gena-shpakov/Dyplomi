@@ -2,14 +2,83 @@ function doGet() {
   return HtmlService.createTemplateFromFile("index.html").evaluate();
 }
 
-function getScheduleForDay(day) {
+function getScheduleForGroupAndDay(group, day) {
   var sheet = SpreadsheetApp.openById(
     "1Pqx0UDzGQMjl6G0iZtcp5ftiv2YeuOQ8xqn6nYM3_A4"
   ).getSheetByName("Лист1");
+
   var data = sheet.getDataRange().getValues();
   if (data.length < 2) return [];
 
-  return data.filter(function (row, i) {
-    return i > 0 && row[0] === day;
-  });
+  return data
+    .slice(1)
+    .filter(function (row) {
+      return row[0] === day && row[1] === group;
+    })
+    .map(function (row) {
+      return {
+        day: row[0],
+        group: row[1],
+        number: row[2],
+        subject: row[3],
+        teacher: row[4],
+        room: row[5],
+        time: row[6],
+      };
+    });
+}
+
+function getLoginOptions() {
+  var sheet = SpreadsheetApp.openById(
+    "1Pqx0UDzGQMjl6G0iZtcp5ftiv2YeuOQ8xqn6nYM3_A4"
+  ).getSheetByName("Лист1");
+  var lastRow = sheet.getLastRow();
+
+  var groupsRaw = sheet.getRange("I2:I" + lastRow).getValues();
+  var teachersRaw = sheet.getRange("J2:J" + lastRow).getValues();
+
+  var groupsRange = [].concat.apply([], groupsRaw).filter(String);
+  var teachersRange = [].concat.apply([], teachersRaw).filter(String);
+
+  function unique(arr) {
+    var result = [];
+    for (var i = 0; i < arr.length; i++) {
+      if (result.indexOf(arr[i]) === -1) {
+        result.push(arr[i]);
+      }
+    }
+    return result;
+  }
+
+  return {
+    groups: unique(groupsRange),
+    teachers: unique(teachersRange),
+  };
+}
+
+function getScheduleForTeacherAndDay(teacher, day) {
+  const sheet = SpreadsheetApp.openById(
+    "1Pqx0UDzGQMjl6G0iZtcp5ftiv2YeuOQ8xqn6nYM3_A4"
+  ).getSheetByName("Лист1");
+
+  const data = sheet.getDataRange().getValues();
+
+  if (data.length < 2) return [];
+
+  return data
+    .slice(1)
+    .filter(function (row) {
+      return row[0] === day && row[4] === teacher;
+    })
+    .map(function (row) {
+      return {
+        day: row[0],
+        group: row[1],
+        number: row[2],
+        subject: row[3],
+        teacher: row[4],
+        room: row[5],
+        time: row[6],
+      };
+    });
 }
