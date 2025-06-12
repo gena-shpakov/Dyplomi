@@ -1,29 +1,31 @@
-import main from "./pages/main.html?raw";
-import student from "./pages/student.html?raw";
-import lecturer from "./pages/lecturer.html?raw";
+import "./style.css";
 
-const routes = {
-  main,
-  student,
-  lecturer,
-};
+const pages = import.meta.glob("./pages/*.html", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
 
-function render(page) {
+const scripts = import.meta.glob("./scripts/*.js", {
+  eager: true,
+  import: "default",
+});
+
+const routes = {};
+for (const path in pages) {
+  const name = path.split("/").pop().replace(".html", "");
+  routes[name] = pages[path];
+}
+
+window.render = function (page) {
   const html = routes[page] || "<h1>404 Not Found</h1>";
   document.getElementById("app").innerHTML = html;
-}
-
-function setupNavigation() {
-  document.addEventListener("click", (e) => {
-    const button = e.target.closest("button[data-page]");
-    if (button) {
-      const page = button.getAttribute("data-page");
-      render(page);
-    }
-  });
-}
+  localStorage.setItem("currentPage", page);
+  const fn = scripts[`./scripts/${page}.js`];
+  if (typeof fn === "function") fn();
+};
 
 window.addEventListener("DOMContentLoaded", () => {
-  setupNavigation();
-  render("main");
+  const page = localStorage.getItem("currentPage") || "main";
+  render(page);
 });

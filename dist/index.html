@@ -9,18 +9,34 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin>(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const s of t.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&i(s)}).observe(document,{childList:!0,subtree:!0});function r(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function i(e){if(e.ep)return;e.ep=!0;const t=r(e);fetch(e.href,t)}})();const u=`<h1>Розклад</h1>
+    <script type="module" crossorigin>(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const i of r.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&s(i)}).observe(document,{childList:!0,subtree:!0});function o(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function s(e){if(e.ep)return;e.ep=!0;const r=o(e);fetch(e.href,r)}})();const l=`<div class="cotainer">
+  <h1 class="title">Викладач</h1>
+  <p id="lecturerName"></p>
+  <button data-page="main">На головну</button>
+</div>
+`,u=`<div class="container">
+  <h1 class="title">Викладач</h1>
+  <form class="login-form" id="teacherForm">
+    <input type="text" id="surnameInput" placeholder="Введіть прізвище" />
+    <button type="submit">Продовжити</button>
+    <div class="error" id="errorMsg"></div>
+  </form>
+</div>
+`,d=`<h1>Розклад</h1>
 
 <div class="menu">
-  <button data-page="student">Студенту</button>
-  <button data-page="lecturer">Викладачу</button>
+  <button data-page="student_login">Студенту</button>
+  <button data-page="lecturer_login">Викладачу</button>
 </div>
-`,d=`<h1>Сторінка студентів</h1>
+`,m=`<h1>Сторінка студентів</h1>
 <p>Керуйте дипломами студентів.</p>
-`,a=`<h1>Сторінка викладача</h1>
-<p>Керуйте дипломами викладача.</p>
-`,l={main:u,student:d,lecturer:a};function c(o){const n=l[o]||"<h1>404 Not Found</h1>";document.getElementById("app").innerHTML=n}function f(){document.addEventListener("click",o=>{const n=o.target.closest("button[data-page]");if(n){const r=n.getAttribute("data-page");c(r)}})}window.addEventListener("DOMContentLoaded",()=>{f(),c("main")});</script>
-    <style rel="stylesheet" crossorigin>*{margin:0;padding:0;box-sizing:border-box}.inter{font-family:Inter,sans-serif;font-optical-sizing:auto;font-weight:400;font-style:normal}body{height:1000px;background-color:#fce4c3;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Inter,sans-serif}h1{font-size:65px;margin-bottom:60px;position:relative;top:-80px}.menu{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:100%}.menu button{width:200px;padding:15px 30px;font-size:25px;border:none;border-radius:10px;background-color:#f8b85f;color:#fff;cursor:pointer;transition:background-color .3s;flex-shrink:0}.menu button:hover{background-color:#c9944a}</style>
+`,g=`<div class="container">
+  <h1>Сторінка для студента</h1>
+  <p>Вітаємо, студенте!</p>
+  <button data-page="main">На головну</button>
+</div>
+`;function p(){const t=localStorage.getItem("surname")||"гість";document.getElementById("lecturerName").textContent=`Вітаємо, ${t}!`,document.querySelector('[data-page="main"]').addEventListener("click",()=>render("main"))}function _(){const t=document.getElementById("teacherForm");if(!t)return;const n=["Смагін","Русін","Трембовецька","Сметанін"];t.addEventListener("submit",o=>{o.preventDefault();const s=document.getElementById("surnameInput").value.trim(),e=document.getElementById("errorMsg");s?n.includes(s)?(localStorage.setItem("surname",s),render("lecturer")):e.textContent="Прізвище не знайдено. Спробуйте ще раз":e.textContent="Будь ласка, введіть прізвище."})}function f(){document.querySelectorAll("[data-page]").forEach(t=>{t.addEventListener("click",()=>{const n=t.getAttribute("data-page");window.render(n)})})}function h(){document.querySelector('[data-page="main"]').addEventListener("click",()=>render("main"))}const c=Object.assign({"./pages/lecturer.html":l,"./pages/lecturer_login.html":u,"./pages/main.html":d,"./pages/student.html":m,"./pages/student_login.html":g}),v=Object.assign({"./scripts/lecturer.js":p,"./scripts/lecturer_login.js":_,"./scripts/main.js":f,"./scripts/student_login.js":h}),a={};for(const t in c){const n=t.split("/").pop().replace(".html","");a[n]=c[t]}window.render=function(t){const n=a[t]||"<h1>404 Not Found</h1>";document.getElementById("app").innerHTML=n,localStorage.setItem("currentPage",t);const o=v[`./scripts/${t}.js`];typeof o=="function"&&o()};window.addEventListener("DOMContentLoaded",()=>{const t=localStorage.getItem("currentPage")||"main";render(t)});</script>
+    <style rel="stylesheet" crossorigin>body{font-family:Inter,sans-serif;background-color:#fce4c3;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh}h1{font-size:2rem;margin-bottom:1rem}button{padding:10px 20px;font-size:1rem;border:none;border-radius:5px;background-color:#f8b85f;color:#fff;cursor:pointer;transition:.3s}button:hover{background-color:#c9944a}.login-form{display:flex;flex-direction:column;gap:10px;width:300px}</style>
   </head>
   <body>
     <div id="app"></div>
