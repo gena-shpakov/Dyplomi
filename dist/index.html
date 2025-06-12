@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DYPLOMI SPA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin>(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const s of t.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&i(s)}).observe(document,{childList:!0,subtree:!0});function r(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function i(e){if(e.ep)return;e.ep=!0;const t=r(e);fetch(e.href,t)}})();const u=`<h1>Розклад</h1>
+
+<div class="menu">
+  <button data-page="student">Студенту</button>
+  <button data-page="lecturer">Викладачу</button>
+</div>
+`,d=`<h1>Сторінка студентів</h1>
+<p>Керуйте дипломами студентів.</p>
+`,a=`<h1>Сторінка викладача</h1>
+<p>Керуйте дипломами викладача.</p>
+`,l={main:u,student:d,lecturer:a};function c(o){const n=l[o]||"<h1>404 Not Found</h1>";document.getElementById("app").innerHTML=n}function f(){document.addEventListener("click",o=>{const n=o.target.closest("button[data-page]");if(n){const r=n.getAttribute("data-page");c(r)}})}window.addEventListener("DOMContentLoaded",()=>{f(),c("main")});</script>
+    <style rel="stylesheet" crossorigin>*{margin:0;padding:0;box-sizing:border-box}.inter{font-family:Inter,sans-serif;font-optical-sizing:auto;font-weight:400;font-style:normal}body{height:1000px;background-color:#fce4c3;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Inter,sans-serif}h1{font-size:65px;margin-bottom:60px;position:relative;top:-80px}.menu{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:100%}.menu button{width:200px;padding:15px 30px;font-size:25px;border:none;border-radius:10px;background-color:#f8b85f;color:#fff;cursor:pointer;transition:background-color .3s;flex-shrink:0}.menu button:hover{background-color:#c9944a}</style>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
