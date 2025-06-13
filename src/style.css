@@ -84,4 +84,18 @@ label{
   color: #333;
   text-align: left;
 }
+select {
+  border: none;
+  border-bottom: 1px solid #333;
+  background: none;
+  font-size: 25px;
+  padding: 10px 5px;
+  outline: none;
+  width: 100%;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
 
