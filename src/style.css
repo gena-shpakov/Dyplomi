@@ -9,9 +9,6 @@ html{
 
 body {
   font-family: 'Inter', sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
 
   background-color: #fce4c3;
   display: flex;
