@@ -2,116 +2,116 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>DYPLOMI SPA</title>
+    <title>DYPLOMI SPA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin>(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))r(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const l of t.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&r(l)}).observe(document,{childList:!0,subtree:!0});function c(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function r(e){if(e.ep)return;e.ep=!0;const t=c(e);fetch(e.href,t)}})();const u=`<div class="cotainer">
-  <h1 class="title">Розклад викладача</h1>
-
-  <p id="lecturerName" style="font-size: 18px; margin-bottom: 20px"></p>
-
-  <label for="daySelect">Оберіть день:</label>
-  <select id="daySelect">
-    <option value="Понеділок">Понеділок</option>
-    <option value="Вівторок">Вівторок</option>
-    <option value="Середа">Середа</option>
-    <option value="Четвер">Четвер</option>
-    <option value="Пʼятниця">Пʼятниця</option>
-  </select>
-
-  <button id="loadSchedule">Показати розклад</button>
-
-  <table id="scheduleTable" border="1" style="margin-top: 20px; display: none">
-    <thead>
-      <tr>
-        <th>День</th>
-        <th>Група</th>
-        <th>№</th>
-        <th>Предмет</th>
-        <th>Аудиторія</th>
-        <th>Час</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-
-  <button data-page="main" style="margin-top: 20px">На головну</button>
-</div>
-`,p=`<div class="container">
-  <h1>Вхід для викладача</h1>
-
-  <form id="lecturerLoginForm" class="login-form">
-    <label for="teacherSelect">Оберіть викладача:</label>
-    <select id="teacherSelect"></select>
-    <button type="submit">Увійти</button>
-    <div class="error" id="errorMsg"></div>
-  </form>
-</div>
-`,g=`<h1>Розклад</h1>
-
-<div class="menu">
-  <button data-page="student_login">Студенту</button>
-  <button data-page="lecturer_login">Викладачу</button>
-</div>
-`,m=`<div class="container">
-  <h1>Розклад</h1>
-
-  <select id="daySelect">
-    <option value="Понеділок">Понеділок</option>
-    <option value="Вівторок">Вівторок</option>
-    <option value="Середа">Середа</option>
-    <option value="Четвер">Четвер</option>
-    <option value="Пʼятниця">Пʼятниця</option>
-  </select>
-
-  <button id="loadSchedule">Показати розклад</button>
-
-  <table id="scheduleTable" border="1" style="margin-top: 20px; display: none">
-    <thead>
-      <tr>
-        <th>№</th>
-        <th>Предмет</th>
-        <th>Викладач</th>
-        <th>Аудиторія</th>
-        <th>Час</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-
-  <button data-page="main">На головну</button>
-</div>
-`,h=`<div class="container">
-  <h1>Вхід для студента</h1>
-
-  <form id="studentLoginForm" class="login-form">
-    <label for="groupSelect">Оберіть групу:</label>
-    <select id="groupSelect"></select>
-    <button type="submit">Увійти</button>
-    <div class="error" id="errorMsg"></div>
-  </form>
-</div>
-`;function b(){const n=localStorage.getItem("teacher");document.getElementById("lecturerName").textContent=n?`Викладач: ${n}`:"Викладач не вказаний";const o=document.getElementById("loadSchedule"),c=document.getElementById("daySelect"),r=document.getElementById("scheduleTable"),e=r.querySelector("tbody");document.querySelector('[data-page="main"]').addEventListener("click",()=>render("main")),o.addEventListener("click",()=>{const t=c.value;if(!n){alert("Викладач не вказаний.");return}google.script.run.withSuccessHandler(l=>{e.innerHTML="",!l||l.length===0?e.innerHTML='<tr><td colspan="6">Розклад відсутній</td></tr>':l.forEach(i=>{const d=document.createElement("tr");d.innerHTML=`
+    <script type="module" crossorigin>(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))o(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const l of t.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&o(l)}).observe(document,{childList:!0,subtree:!0});function c(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function o(e){if(e.ep)return;e.ep=!0;const t=c(e);fetch(e.href,t)}})();const u=`<div class="cotainer">\r
+  <h1 class="title">Розклад викладача</h1>\r
+\r
+  <p id="lecturerName" style="font-size: 18px; margin-bottom: 20px"></p>\r
+\r
+  <label for="daySelect">Оберіть день:</label>\r
+  <select id="daySelect">\r
+    <option value="Понеділок">Понеділок</option>\r
+    <option value="Вівторок">Вівторок</option>\r
+    <option value="Середа">Середа</option>\r
+    <option value="Четвер">Четвер</option>\r
+    <option value="Пʼятниця">Пʼятниця</option>\r
+  </select>\r
+\r
+  <button id="loadSchedule">Показати розклад</button>\r
+\r
+  <table id="scheduleTable" border="1" style="margin-top: 20px; display: none">\r
+    <thead>\r
+      <tr>\r
+        <th>День</th>\r
+        <th>Група</th>\r
+        <th>№</th>\r
+        <th>Предмет</th>\r
+        <th>Аудиторія</th>\r
+        <th>Час</th>\r
+      </tr>\r
+    </thead>\r
+    <tbody></tbody>\r
+  </table>\r
+\r
+  <button data-page="main" style="margin-top: 20px">На головну</button>\r
+</div>\r
+`,p=`<div class="container">\r
+  <h1>Вхід для викладача</h1>\r
+\r
+  <form id="lecturerLoginForm" class="login-form">\r
+    <label for="teacherSelect">Оберіть викладача:</label>\r
+    <select id="teacherSelect"></select>\r
+    <button type="submit">Увійти</button>\r
+    <div class="error" id="errorMsg"></div>\r
+  </form>\r
+</div>\r
+`,g=`<h1>Розклад</h1>\r
+\r
+<div class="menu">\r
+  <button data-page="student_login">Студенту</button>\r
+  <button data-page="lecturer_login">Викладачу</button>\r
+</div>\r
+`,m=`<div class="container">\r
+  <h1>Розклад</h1>\r
+\r
+  <select id="daySelect">\r
+    <option value="Понеділок">Понеділок</option>\r
+    <option value="Вівторок">Вівторок</option>\r
+    <option value="Середа">Середа</option>\r
+    <option value="Четвер">Четвер</option>\r
+    <option value="Пʼятниця">Пʼятниця</option>\r
+  </select>\r
+\r
+  <button id="loadSchedule">Показати розклад</button>\r
+\r
+  <table id="scheduleTable" border="1" style="margin-top: 20px; display: none">\r
+    <thead>\r
+      <tr>\r
+        <th>№</th>\r
+        <th>Предмет</th>\r
+        <th>Викладач</th>\r
+        <th>Аудиторія</th>\r
+        <th>Час</th>\r
+      </tr>\r
+    </thead>\r
+    <tbody></tbody>\r
+  </table>\r
+\r
+  <button data-page="main">На головну</button>\r
+</div>\r
+`,h=`<div class="container">\r
+  <h1>Вхід для студента</h1>\r
+\r
+  <form id="studentLoginForm" class="login-form">\r
+    <label for="groupSelect">Оберіть групу:</label>\r
+    <select id="groupSelect"></select>\r
+    <button type="submit">Увійти</button>\r
+    <div class="error" id="errorMsg"></div>\r
+  </form>\r
+</div>\r
+`;function b(){const n=localStorage.getItem("teacher");document.getElementById("lecturerName").textContent=n?`Викладач: ${n}`:"Викладач не вказаний";const r=document.getElementById("loadSchedule"),c=document.getElementById("daySelect"),o=document.getElementById("scheduleTable"),e=o.querySelector("tbody");document.querySelector('[data-page="main"]').addEventListener("click",()=>render("main")),r.addEventListener("click",()=>{const t=c.value;if(!n){alert("Викладач не вказаний.");return}google.script.run.withSuccessHandler(l=>{e.innerHTML="",!l||l.length===0?e.innerHTML='<tr><td colspan="6">Розклад відсутній</td></tr>':l.forEach(i=>{const d=document.createElement("tr");d.innerHTML=`
               <td>${i.day}</td>
               <td>${i.group}</td>
               <td>${i.number}</td>
               <td>${i.subject}</td>
               <td>${i.room}</td>
               <td>${i.time}</td>
-            `,e.appendChild(d)}),r.style.display="table"}).withFailureHandler(l=>{alert("Помилка при завантаженні розкладу: "+l.message)}).getScheduleForTeacherAndDay(n,t)})}function f(){const n=document.getElementById("lecturerLoginForm"),o=document.getElementById("teacherSelect"),c=document.getElementById("errorMsg");google.script.run.withSuccessHandler(r=>{o.innerHTML="",r.teachers.forEach(e=>{const t=document.createElement("option");t.value=e,t.textContent=e,o.appendChild(t)})}).getLoginOptions(),n.addEventListener("submit",r=>{r.preventDefault();const e=o.value;if(!e){c.textContent="Будь ласка, оберіть викладача.";return}localStorage.setItem("teacher",e),render("lecturer")})}function y(){document.querySelectorAll("[data-page]").forEach(n=>{n.addEventListener("click",()=>{const o=n.getAttribute("data-page");window.render(o)})})}function _(){const n=document.getElementById("loadSchedule"),o=document.getElementById("daySelect"),c=document.getElementById("scheduleTable"),r=c.querySelector("tbody");document.querySelector('[data-page="main"]').addEventListener("click",()=>render("main")),n.addEventListener("click",()=>{const e=o.value,t=localStorage.getItem("group");if(!t){alert("Група не вказана. Перейдіть назад на логін."),render("student_login");return}google.script.run.withSuccessHandler(l=>{r.innerHTML="",!l||l.length===0?r.innerHTML='<tr><td colspan="5">Розклад не знайдено</td></tr>':l.forEach(i=>{const d=document.createElement("tr");d.innerHTML=`
+            `,e.appendChild(d)}),o.style.display="table"}).withFailureHandler(l=>{alert("Помилка при завантаженні розкладу: "+l.message)}).getScheduleForTeacherAndDay(n,t)})}function f(){const n=document.getElementById("lecturerLoginForm"),r=document.getElementById("teacherSelect"),c=document.getElementById("errorMsg");google.script.run.withSuccessHandler(o=>{r.innerHTML="",o.teachers.forEach(e=>{const t=document.createElement("option");t.value=e,t.textContent=e,r.appendChild(t)})}).getLoginOptions(),n.addEventListener("submit",o=>{o.preventDefault();const e=r.value;if(!e){c.textContent="Будь ласка, оберіть викладача.";return}localStorage.setItem("teacher",e),render("lecturer")})}function y(){document.querySelectorAll("[data-page]").forEach(n=>{n.addEventListener("click",()=>{const r=n.getAttribute("data-page");window.render(r)})})}function _(){const n=document.getElementById("loadSchedule"),r=document.getElementById("daySelect"),c=document.getElementById("scheduleTable"),o=c.querySelector("tbody");document.querySelector('[data-page="main"]').addEventListener("click",()=>render("main")),n.addEventListener("click",()=>{const e=r.value,t=localStorage.getItem("group");if(!t){alert("Група не вказана. Перейдіть назад на логін."),render("student_login");return}google.script.run.withSuccessHandler(l=>{o.innerHTML="",!l||l.length===0?o.innerHTML='<tr><td colspan="5">Розклад не знайдено</td></tr>':l.forEach(i=>{const d=document.createElement("tr");d.innerHTML=`
               <td>${i.number}</td>
               <td>${i.subject}</td>
               <td>${i.teacher}</td>
               <td>${i.room}</td>
               <td>${i.time}</td>
-            `,r.appendChild(d)}),c.style.display="table"}).withFailureHandler(l=>{alert("Помилка при завантаженні: "+l.message)}).getScheduleForGroupAndDay(t,e)})}function v(){const n=document.getElementById("studentLoginForm"),o=document.getElementById("groupSelect"),c=document.getElementById("errorMsg");google.script.run.withSuccessHandler(r=>{o.innerHTML="",r.groups.forEach(e=>{const t=document.createElement("option");t.value=e,t.textContent=e,o.appendChild(t)})}).getLoginOptions(),n.addEventListener("submit",r=>{r.preventDefault();const e=o.value;if(!e){c.textContent="Будь ласка, оберіть групу.";return}localStorage.setItem("group",e),render("student")})}const s=Object.assign({"./pages/lecturer.html":u,"./pages/lecturer_login.html":p,"./pages/main.html":g,"./pages/student.html":m,"./pages/student_login.html":h}),S=Object.assign({"./scripts/lecturer.js":b,"./scripts/lecturer_login.js":f,"./scripts/main.js":y,"./scripts/student.js":_,"./scripts/student_login.js":v}),a={};for(const n in s){const o=n.split("/").pop().replace(".html","");a[o]=s[n]}window.render=function(n){const o=a[n]||"<h1>404 Not Found</h1>";document.getElementById("app").innerHTML=o,localStorage.setItem("currentPage",n);const c=S[`./scripts/${n}.js`];typeof c=="function"&&c()};window.addEventListener("DOMContentLoaded",()=>{const n=localStorage.getItem("currentPage")||"main";render(n)});</script>
-    <style rel="stylesheet" crossorigin>body{font-family:Inter,sans-serif;background-color:#fce4c3;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh}h1{font-size:2rem;margin-bottom:1rem}button{padding:10px 20px;font-size:1rem;border:none;border-radius:5px;background-color:#f8b85f;color:#fff;cursor:pointer;transition:.3s}button:hover{background-color:#c9944a}.login-form{display:flex;flex-direction:column;gap:10px;width:300px}</style>
+            `,o.appendChild(d)}),c.style.display="table"}).withFailureHandler(l=>{alert("Помилка при завантаженні: "+l.message)}).getScheduleForGroupAndDay(t,e)})}function v(){const n=document.getElementById("studentLoginForm"),r=document.getElementById("groupSelect"),c=document.getElementById("errorMsg");google.script.run.withSuccessHandler(o=>{r.innerHTML="",o.groups.forEach(e=>{const t=document.createElement("option");t.value=e,t.textContent=e,r.appendChild(t)})}).getLoginOptions(),n.addEventListener("submit",o=>{o.preventDefault();const e=r.value;if(!e){c.textContent="Будь ласка, оберіть групу.";return}localStorage.setItem("group",e),render("student")})}const s=Object.assign({"./pages/lecturer.html":u,"./pages/lecturer_login.html":p,"./pages/main.html":g,"./pages/student.html":m,"./pages/student_login.html":h}),S=Object.assign({"./scripts/lecturer.js":b,"./scripts/lecturer_login.js":f,"./scripts/main.js":y,"./scripts/student.js":_,"./scripts/student_login.js":v}),a={};for(const n in s){const r=n.split("/").pop().replace(".html","");a[r]=s[n]}window.render=function(n){const r=a[n]||"<h1>404 Not Found</h1>";document.getElementById("app").innerHTML=r,localStorage.setItem("currentPage",n);const c=S[`./scripts/${n}.js`];typeof c=="function"&&c()};window.addEventListener("DOMContentLoaded",()=>{const n=localStorage.getItem("currentPage")||"main";render(n)});</script>
+    <style rel="stylesheet" crossorigin>html{box-sizing:border-box}*,*:before,*:after{margin:0;padding:0;box-sizing:inherit}body{font-family:Inter,sans-serif;background-color:#fce4c3;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh}h1{font-size:55px;margin-bottom:200px;letter-spacing:5px}button{padding:10px 20px;font-size:1rem;border:none;border-radius:5px;background-color:#f8b85f;color:#fff;cursor:pointer;transition:.3s}button:hover{background-color:#c9944a}.login-form{display:flex;flex-direction:column;gap:10px;width:300px}</style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app"></div>
   </body>
 </html>
