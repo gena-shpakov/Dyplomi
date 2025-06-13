@@ -3,6 +3,10 @@ export default function () {
   const teacherSelect = document.getElementById("teacherSelect");
   const errorMsg = document.getElementById("errorMsg");
 
+  document
+    .querySelector('[data-page="main"]')
+    .addEventListener("click", () => render("main"));
+
   // Отримати список викладачів з GAS
   google.script.run
     .withSuccessHandler((data) => {

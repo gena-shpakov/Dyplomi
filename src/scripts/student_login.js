@@ -3,6 +3,10 @@ export default function () {
   const groupSelect = document.getElementById("groupSelect");
   const errorMsg = document.getElementById("errorMsg");
 
+  document
+    .querySelector('[data-page="main"]')
+    .addEventListener("click", () => render("main"));
+
   google.script.run
     .withSuccessHandler((data) => {
       groupSelect.innerHTML = "";
