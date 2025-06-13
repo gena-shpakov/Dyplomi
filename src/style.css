@@ -34,7 +34,7 @@ h1 {
   margin-top: 10px;
 }
 
-.menu button {
+button {
   background-color: #A64B2A;
   color: white;
   padding: 10px 20px;
@@ -44,10 +44,10 @@ h1 {
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
 }
-.menu button:hover {
+button:hover {
   background-color: #8A3A1A;
 }
-.menu button:active {
+button:active {
   transform: scale(0.95);
 }
 .button-inactive {
