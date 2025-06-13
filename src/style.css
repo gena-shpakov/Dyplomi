@@ -31,7 +31,7 @@ h1 {
   flex-direction: row;
   align-items: center;
   gap: 15px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .menu button {
