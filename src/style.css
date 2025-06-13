@@ -92,6 +92,10 @@ select {
   width: 100%;
   color: #333;
   appearance: none;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
