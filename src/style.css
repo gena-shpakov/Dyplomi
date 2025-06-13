@@ -28,19 +28,32 @@ h1 {
   letter-spacing: 5px;
 }
 
-button {
+.menu{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.menu button {
+  background-color: #A64B2A;
+  color: white;
   padding: 10px 20px;
   font-size: 1rem;
   border: none;
   border-radius: 5px;
-  background-color: #f8b85f;
-  color: white;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
-
-button:hover {
-  background-color: #c9944a;
+.menu button:hover {
+  background-color: #8A3A1A;
+}
+.menu button:active {
+  transform: scale(0.95);
+}
+.button-inactive {
+  background-color: #C9B8AA;
 }
 
 .login-form {
