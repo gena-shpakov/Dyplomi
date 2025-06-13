@@ -7,7 +7,6 @@ html{
   box-sizing: inherit;
 }
 
-
 body {
   font-family: Inter, sans-serif;
   background-color: #fce4c3;
@@ -21,8 +20,9 @@ body {
 }
 
 h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 55px;
+  margin-bottom: 200px;
+  letter-spacing: 5px;
 }
 
 button {
