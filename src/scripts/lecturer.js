@@ -15,9 +15,23 @@ export default function () {
   // Отримуємо всі кнопки з днями
   const dayButtons = document.querySelectorAll(".day-button");
 
+  // Визначаємо поточний день тижня (0 = неділя, 1 = понеділок, ...)
+  const jsDay = new Date().getDay(); // 1–5 для Пн–Пт
+  const today = jsDay === 0 ? 7 : jsDay; // зробимо 1–7, де 7 — неділя
+
   dayButtons.forEach((button) => {
+    // Виділяємо кнопку поточного дня
+    if (parseInt(button.dataset.day) === today) {
+      button.classList.add("active");
+    }
+
+    // Логіка кліку
     button.addEventListener("click", () => {
-      const day = button.dataset.day;
+      // Знімаємо активність з усіх
+      dayButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      const day = button.textContent.trim();
 
       if (!lecturerName) {
         alert("Викладач не вказаний.");
