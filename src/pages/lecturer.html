@@ -3,14 +3,13 @@
 
   <p id="lecturerName" style="font-size: 18px; margin-bottom: 20px"></p>
 
-  <label for="daySelect">Оберіть день:</label>
-  <select id="daySelect">
-    <option value="Понеділок">Понеділок</option>
-    <option value="Вівторок">Вівторок</option>
-    <option value="Середа">Середа</option>
-    <option value="Четвер">Четвер</option>
-    <option value="Пʼятниця">Пʼятниця</option>
-  </select>
+  <div class="days-menu">
+    <button class="day-button" data-day="Понеділок">Понеділок</button>
+    <button class="day-button" data-day="Вівторок">Вівторок</button>
+    <button class="day-button" data-day="Середа">Середа</button>
+    <button class="day-button" data-day="Четвер">Четвер</button>
+    <button class="day-button" data-day="П'ятниця">П'ятниця</button>
+  </div>
 
   <button id="loadSchedule">Показати розклад</button>
 
