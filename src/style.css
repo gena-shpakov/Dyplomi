@@ -179,6 +179,6 @@ input::placeholder {
 .day-button.active{
   background-color: #4CAF50;
   color: white;
-  font-size: 16x;
+  font-size: 16px;
   transform: scale(1.2);
 }
