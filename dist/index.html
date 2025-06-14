@@ -106,11 +106,11 @@
 </div>\r
 `;function b(){const n=localStorage.getItem("teacher");document.getElementById("lecturerName").textContent=n?`Викладач: ${n}`:"Викладач не вказаний";const r=document.getElementById("loadSchedule"),c=document.getElementById("daySelect"),o=document.getElementById("scheduleTable"),e=o.querySelector("tbody");document.querySelector('[data-page="lecturer_login"]').addEventListener("click",()=>render("lecturer_login")),r.addEventListener("click",()=>{const t=c.value;if(!n){alert("Викладач не вказаний.");return}google.script.run.withSuccessHandler(l=>{e.innerHTML="",!l||l.length===0?e.innerHTML='<tr><td colspan="6">Розклад відсутній</td></tr>':l.forEach(d=>{const i=document.createElement("tr");i.innerHTML=`
               <td>${d.day}</td>
-              <td>${d.group}</td>
+              <td class="group-cell">${d.group}</td>
               <td>${d.number}</td>
-              <td>${d.subject}</td>
+              <td class="subject-cell">${d.subject}</td>
               <td>${d.room}</td>
-              <td>${d.time}</td>
+              <td class="time-cell">${d.time}</td>
             `,e.appendChild(i)}),o.style.display="table"}).withFailureHandler(l=>{alert("Помилка при завантаженні розкладу: "+l.message)}).getScheduleForTeacherAndDay(n,t)})}function _(){const n=document.getElementById("lecturerLoginForm"),r=document.getElementById("teacherSelect"),c=document.getElementById("errorMsg");document.querySelector('[data-page="main"]').addEventListener("click",()=>render("main")),google.script.run.withSuccessHandler(o=>{r.innerHTML="",o.teachers.forEach(e=>{const t=document.createElement("option");t.value=e,t.textContent=e,r.appendChild(t)})}).getLoginOptions(),n.addEventListener("submit",o=>{o.preventDefault();const e=r.value;if(!e){c.textContent="Будь ласка, оберіть викладача.";return}localStorage.setItem("teacher",e),render("lecturer")})}function f(){document.querySelectorAll("[data-page]").forEach(n=>{n.addEventListener("click",()=>{const r=n.getAttribute("data-page");window.render(r)})})}function v(){const n=document.getElementById("loadSchedule"),r=document.getElementById("daySelect"),c=document.getElementById("scheduleTable"),o=c.querySelector("tbody");document.querySelector('[data-page="student_login"]').addEventListener("click",()=>render("student_login")),n.addEventListener("click",()=>{const e=r.value,t=localStorage.getItem("group");if(!t){alert("Група не вказана. Перейдіть назад на логін."),render("student_login");return}google.script.run.withSuccessHandler(l=>{o.innerHTML="",!l||l.length===0?o.innerHTML='<tr><td colspan="5">Розклад не знайдено</td></tr>':l.forEach(d=>{const i=document.createElement("tr");i.innerHTML=`
               <td>${d.number}</td>
               <td>${d.subject}</td>
