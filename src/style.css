@@ -167,7 +167,7 @@ input::placeholder {
   margin: 20px 0;
 }
 .day-button {
-  fony-size: 14px;
+  font-size: 14px;
   padding: 6px 12px;
   border: none;
   border-radius: 6px;
