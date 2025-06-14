@@ -6,7 +6,7 @@ export default function () {
 
   document
     .querySelector('[data-page="main"]')
-    .addEventListener("click", () => render("main"));
+    .addEventListener("click", () => render("student_login"));
 
   button.addEventListener("click", () => {
     const day = select.value;

@@ -11,7 +11,7 @@ export default function () {
 
   document
     .querySelector('[data-page="main"]')
-    .addEventListener("click", () => render("main"));
+    .addEventListener("click", () => render("lecturer_login"));
 
   button.addEventListener("click", () => {
     const day = select.value;
