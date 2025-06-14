@@ -10,7 +10,7 @@ export default function () {
   const tbody = table.querySelector("tbody");
 
   document
-    .querySelector('[data-page="main"]')
+    .querySelector('[data-page="lecturer_login"]')
     .addEventListener("click", () => render("lecturer_login"));
 
   button.addEventListener("click", () => {
