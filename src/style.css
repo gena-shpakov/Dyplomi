@@ -126,7 +126,7 @@ input::placeholder {
   margin-top: 20px;
 }
 #scheduleTable {
-  width: 90%;
+  width: 400px;
   margin: 20px auto;
   border-collapse: collapse;
   color: black;
