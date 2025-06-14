@@ -120,7 +120,8 @@ input::placeholder {
 }
 .button-row{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
   width: 100%;
   margin-top: 20px;
 }
