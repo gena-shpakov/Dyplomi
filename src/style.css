@@ -121,7 +121,41 @@ input::placeholder {
 .button-row{
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 60px;
   width: 100%;
   margin-top: 20px;
+}
+#scheduleTable {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  color: black;
+}
+#scheduleTable th, #scheduleTable td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+}
+#scheduleTable th {
+  background-color: #ddd;
+}
+#scheduleTable td.group-cell{
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+}
+#scheduleTable td.subject-cell{
+  font-size: 18px;
+  color: black;
+}
+#schdileTable td.subject-cell .teacher-room {
+  font-size: 14px;
+  color: black;
+  margin-top: 5px;
+}
+#scheduleTable td.time-cell{
+  font-size: 16px;
+  color: black;
 }
