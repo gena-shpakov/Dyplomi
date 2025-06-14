@@ -121,7 +121,7 @@ input::placeholder {
 .button-row{
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 40px;
   width: 100%;
   margin-top: 20px;
 }
