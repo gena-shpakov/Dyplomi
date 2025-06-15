@@ -44,7 +44,7 @@ function getScheduleForGroupAndDay(group, day) {
 function getLoginOptions() {
   var sheet = SpreadsheetApp.openById(
     "1Pqx0UDzGQMjl6G0iZtcp5ftiv2YeuOQ8xqn6nYM3_A4"
-  ).getSheetByName("Лист1");
+  ).getSheetByName("Чисельник");
   var lastRow = sheet.getLastRow();
 
   var groupsRaw = sheet.getRange("I2:I" + lastRow).getValues();
