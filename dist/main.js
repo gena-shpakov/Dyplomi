@@ -2,13 +2,26 @@ function doGet() {
   return HtmlService.createTemplateFromFile("index.html").evaluate();
 }
 
-function getScheduleForGroupAndDay(group, day) {
-  var sheet = SpreadsheetApp.openById(
-    "1Pqx0UDzGQMjl6G0iZtcp5ftiv2YeuOQ8xqn6nYM3_A4"
-  ).getSheetByName("Лист1");
+function getCurrentWeekType() {
+  const firstWeekStart = new Date("2024-09-02"); // перший понеділок навчального року
+  const today = new Date();
 
-  var data = sheet.getDataRange().getValues();
-  if (data.length < 2) return [];
+  const diffInWeeks = Math.floor(
+    (today - firstWeekStart) / (1000 * 60 * 60 * 24 * 7)
+  );
+
+  return diffInWeeks % 2 === 0 ? "Чисельник" : "Знаменник";
+}
+
+
+function getScheduleForGroupAndDay(group, day) {
+  const weekType = getCurrentWeekType();
+  const sheet = SpreadsheetApp.openById(
+    "1Pqx0UDzGQMjl6G0iZtcp5ftiv2YeuOQ8xqn6nYM3_A4"
+  ).getSheetByName(weekType);;
+  
+    const data = sheet.getDataRange().getValues();
+      if (data.length < 2) return [];
 
   return data
     .slice(1)
@@ -57,14 +70,14 @@ function getLoginOptions() {
 }
 
 function getScheduleForTeacherAndDay(teacher, day) {
+  const weekType = getCurrentWeekType();
   const sheet = SpreadsheetApp.openById(
     "1Pqx0UDzGQMjl6G0iZtcp5ftiv2YeuOQ8xqn6nYM3_A4"
-  ).getSheetByName("Лист1");
+  ).getSheetByName(weekType);
 
   const data = sheet.getDataRange().getValues();
-
-  if (data.length < 2) return [];
-
+    if (data.length < 2) return [];
+    
   return data
     .slice(1)
     .filter(function (row) {
