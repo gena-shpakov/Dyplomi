@@ -1,5 +1,10 @@
 // Основна функція, яка виконується при завантаженні сторінки студента
 export default function () {
+  const groupName = localStorage.getItem("group");
+  document.getElementById("groupName").textContent = groupName
+  ? `Група: ${groupName}`
+  : "Група не вказана";
+
   // Отримуємо посилання на таблицю та її тіло (tbody)
   const table = document.getElementById("scheduleTable");
   const tbody = table.querySelector("tbody");
