@@ -48,9 +48,12 @@ export default function () {
         return;
       }
 
+      showLoader();
+
       // Викликаємо серверну функцію для отримання розкладу
       google.script.run
         .withSuccessHandler((data) => {
+          hideLoader();
           // Очищаємо попередній вміст таблиці
           tbody.innerHTML = "";
 
@@ -76,10 +79,18 @@ export default function () {
           table.style.display = "table";
         })
         .withFailureHandler((e) => {
+          hideLoader();
           // Виводимо повідомлення про помилку
           alert("Помилка при завантаженні: " + e.message);
         })
         .getScheduleForGroupAndDay(group, day); // Викликаємо серверну функцію з параметрами
     });
   });
+}
+
+function showLoader() {
+  document.getElementById("loader").style.display = "flex";
+}
+function hideLoader() {
+  document.getElementById("loader").style.display = "none";
 }

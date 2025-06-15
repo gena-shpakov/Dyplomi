@@ -38,8 +38,11 @@ export default function () {
         return;
       }
 
+      showLoader();
+
       google.script.run
         .withSuccessHandler((data) => {
+          hideLoader();
           tbody.innerHTML = "";
 
           if (!data || data.length === 0) {
@@ -62,9 +65,17 @@ export default function () {
           table.style.display = "table";
         })
         .withFailureHandler((e) => {
+          hideLoader();
           alert("Помилка при завантаженні розкладу: " + e.message);
         })
         .getScheduleForTeacherAndDay(lecturerName, day);
     });
   });
+}
+
+function showLoader() {
+  document.getElementById("loader").style.display = "flex";
+}
+function hideLoader() {
+  document.getElementById("loader").style.display = "none";
 }
