@@ -29,10 +29,10 @@ export default function () {
             const tr = document.createElement("tr");
             tr.innerHTML = `
               <td>${row.number}</td>
-              <td>${row.subject}</td>
+              <td class="subject-cell">${row.subject}</td>
               <td>${row.teacher}</td>
               <td>${row.room}</td>
-              <td>${row.time}</td>
+              <td class="time-cell">${row.time}</td>
             `;
             tbody.appendChild(tr);
           });
