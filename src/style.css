@@ -125,37 +125,37 @@ input::placeholder {
   width: 100%;
   margin-top: 20px;
 }
-#scheduleTable {
+#lecturerscheduleTable, #studentscheduleTable {
   width: 400px;
   margin: 20px auto;
   border-collapse: collapse;
   color: black;
 }
-#scheduleTable th, #scheduleTable td {
+#lecturerscheduleTable th, #studentscheduleTable td {
   border: 1px solid #ccc;
   padding: 10px;
   text-align: center;
   vertical-align: middle;
   font-weight: bold;
 }
-#scheduleTable th {
+#lecturerscheduleTable th, #studentscheduleTable th {
   background-color: #ddd;
 }
-#scheduleTable td.group-cell{
+#lecturerscheduleTable td.group-cell, #studentscheduleTable td.group-cell {
   font-weight: bold;
   font-size: 20px;
   color: black;
 }
-#scheduleTable td.subject-cell{
+#lecturerscheduleTable td.subject-cell, #studentscheduleTable td.subject-cell {
   font-size: 18px;
   color: black;
 }
-#schdileTable td.subject-cell .teacher-room {
+#lecturerschdileTable td.subject-cell .teacher-room, #studentschdileTable td.subject-cell .teacher-room {
   font-size: 14px;
   color: black;
   margin-top: 5px;
 }
-#scheduleTable td.time-cell{
+#lecturerscheduleTable td.time-cell, #studentscheduleTable td.time-cell {
   font-size: 16px;
   color: black;
 }
