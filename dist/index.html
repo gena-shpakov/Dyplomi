@@ -10,7 +10,7 @@
     <script type="module" crossorigin>(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))a(t);new MutationObserver(t=>{for(const r of t)if(r.type==="childList")for(const s of r.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&a(s)}).observe(document,{childList:!0,subtree:!0});function o(t){const r={};return t.integrity&&(r.integrity=t.integrity),t.referrerPolicy&&(r.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?r.credentials="include":t.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function a(t){if(t.ep)return;t.ep=!0;const r=o(t);fetch(t.href,r)}})();const b=`<div class="cotainer">\r
   <h1 class="title">Розклад викладача</h1>\r
 \r
-  <p id="lecturerName" style="font-size: 18px; margin-bottom: 20px"></p>\r
+  <p id="lecturerName" style="font-size: 25px; margin-bottom: 20px"></p>\r
 \r
   <div class="days-menu">\r
     <button class="day-button" data-day="1">Понеділок</button>\r
@@ -63,9 +63,9 @@
   <button data-page="lecturer_login">Викладачу</button>\r
 </div>\r
 `,_=`<div class="container">\r
-  <h1>Розклад</h1>\r
+  <h1 class="title">Розклад студента</h1>\r
 \r
-  <p id="groupName" style="font-size: 18px; margin-bottom: 20px;"></p>\r
+  <p id="groupName" style="font-size: 25px; margin-bottom: 20px;"></p>\r
 \r
 \r
   <div class="days-menu">\r
