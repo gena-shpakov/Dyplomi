@@ -6,7 +6,7 @@ export default function () {
   : "Група не вказана";
 
   // Отримуємо посилання на таблицю та її тіло (tbody)
-  const table = document.getElementById("scheduleTable");
+  const table = document.getElementById("studentscheduleTable");
   const tbody = table.querySelector("tbody");
 
   // Обробник для кнопки "Назад", яка повертає на сторінку входу студента

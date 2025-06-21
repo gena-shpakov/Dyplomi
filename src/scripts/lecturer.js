@@ -4,7 +4,7 @@ export default function () {
     ? `Викладач: ${lecturerName}`
     : "Викладач не вказаний";
 
-  const table = document.getElementById("scheduleTable");
+  const table = document.getElementById("lecturerscheduleTable");
   const tbody = table.querySelector("tbody");
 
   // Назад
