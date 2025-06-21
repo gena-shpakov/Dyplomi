@@ -150,7 +150,7 @@ input::placeholder {
   font-size: 18px;
   color: black;
 }
-#lecturerschdileTable td.subject-cell .teacher-room, #studentschdileTable td.subject-cell .teacher-room {
+#lecturerschduleTable td.subject-cell .teacher-room, #studentschduleTable td.subject-cell .teacher-room {
   font-size: 14px;
   color: black;
   margin-top: 5px;
