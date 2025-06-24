@@ -209,3 +209,42 @@ input::placeholder {
   80% {transform: rotate(2deg);}
   100% {transform: rotate(0deg);}
 }
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+  h1 {
+    font-size: 40px;
+    margin-bottom: 100px;
+  }
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+  button {
+    width: 100%;
+    font-size: 20px;
+  }
+  form {
+    width: 100%;
+    max-width: none;
+  }
+  #lecturerscheduleTable, #studentscheduleTable {
+    width: 100%;
+    font-size: 14px;
+  }
+}
+@media (max-width: 400px) {
+  h1 {
+    font-size: 30px;
+    margin-bottom: 50px;
+  }
+  button {
+    font-size: 18px;
+    padding: 8px 16px;
+  }
+  .day-button {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
