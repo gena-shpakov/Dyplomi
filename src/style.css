@@ -248,3 +248,11 @@ input::placeholder {
     padding: 4px 8px;
   }
 }
+.lecturerName{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+}
