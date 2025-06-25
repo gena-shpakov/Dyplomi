@@ -7,7 +7,7 @@ export default function () {
   const weekType = getWeekType();
   const weekTypeElement = document.getElementById("weekTypeLecturer");
   if (weekTypeElement) {
-    weekTypeElement.textContent = `Зараз: $(weekType}`;
+    weekTypeElement.textContent = `Зараз: ${weekType}`;
   }
 
   const table = document.getElementById("lecturerscheduleTable");
@@ -21,19 +21,15 @@ export default function () {
   // Отримуємо всі кнопки з днями
   const dayButtons = document.querySelectorAll(".day-button");
 
-  // Визначаємо поточний день тижня (0 = неділя, 1 = понеділок, ...)
-  const jsDay = new Date().getDay(); // 1–5 для Пн–Пт
-  const today = jsDay === 0 ? 7 : jsDay; // зробимо 1–7, де 7 — неділя
+  const jsDay = new Date().getDay(); // 0 — неділя, 1 — понеділок ...
+  const today = jsDay === 0 ? 7 : jsDay;
 
   dayButtons.forEach((button) => {
-    // Виділяємо кнопку поточного дня
     if (parseInt(button.dataset.day) === today) {
       button.classList.add("active");
     }
 
-    // Логіка кліку
     button.addEventListener("click", () => {
-      // Знімаємо активність з усіх
       dayButtons.forEach((btn) => btn.classList.remove("active"));
       button.classList.add("active");
 
