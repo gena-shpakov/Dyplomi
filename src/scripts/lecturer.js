@@ -7,7 +7,7 @@ export default function () {
   const weekType = getWeekType();
   const weekTypeElement = document.getElementById("weekTypeLecturer");
   if (weekTypeElement) {
-    weekTypeElement.textContent = 'Зараз: $(weekType}';
+    weekTypeElement.textContent = `Зараз: $(weekType}`;
   }
 
   const table = document.getElementById("lecturerscheduleTable");
@@ -89,13 +89,6 @@ function hideLoader() {
 function getWeekType() {
   const now = new Date();
   const startOfYear = new Date(now.getFullYear(), 0, 1);
-  const weekNumber = Math.cell((((now - startOfYear) / 86400000) + startOfYear.getDay() + 1) / 7);
+  const weekNumber = Math.ceil((((now - startOfYear) / 86400000) + startOfYear.getDay() + 1) / 7);
   return weekNumber % 2 === 0 ? 'Чисельник' : 'Знаменник';
-}
-
-function showLoader() {
-  document.getElementById("loader").style.display = "flex";
-}
-function hideLoader() {
-  document.getElementById("loader").style.display = "none";
 }
