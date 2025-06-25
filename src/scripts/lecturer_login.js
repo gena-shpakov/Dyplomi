@@ -1,7 +1,10 @@
 export default function () {
   const form = document.getElementById("lecturerLoginForm");
-  const teacherSelect = document.getElementById("teacherSelect");
+  const teacherInput = document.getElementById("teacherInput");
+  const autocompleteList = document.getElementById("autocompleteList");
   const errorMsg = document.getElementById("errorMsg");
+
+  let allTeachers = [];
 
   document
     .querySelector('[data-page="main"]')
@@ -19,6 +22,36 @@ export default function () {
       });
     })
     .getLoginOptions();
+
+
+    teacherInput.addEventListener("input", () => {
+    const query = teacherInput.value.toLowerCase().trim();
+    autocompleteList.innerHTML = "";
+
+    if (!query) return;
+
+    const filtered = allTeachers.filter((teacher) =>
+      teacher.toLowerCase().includes(query)
+    );
+
+    filtered.forEach((name) => {
+      const li = document.createElement("li");
+      li.textContent = name;
+      li.classList.add("autocomplete-item");
+      li.addEventListener("click", () => {
+        teacherInput.value = name;
+        autocompleteList.innerHTML = "";
+      });
+      autocompleteList.appendChild(li);
+    });
+  });
+
+  teacherInput.addEventListener("blur", () => {
+    setTimeout(() => {
+      autocompleteList.innerHTML = "";
+    }, 150);
+  });
+
 
   // Обробка форми
   form.addEventListener("submit", (e) => {

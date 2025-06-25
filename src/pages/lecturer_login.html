@@ -1,12 +1,13 @@
 <div class="container">
   <h1>Вхід для викладача</h1>
 
-  <form id="lecturerLoginForm" class="login-form">
-    <label for="teacherSelect">Оберіть викладача:</label>
-    <select id="teacherSelect"></select>
+  <form id="lecturerLoginForm" class="login-form" autocomplete="off">
+    <label for="teacherSelect">Оберіть викладача або введіть викладача:</label>
+    <input type="text" id="teacherInput" placeholder="Почніть вводити ім'я викладача...">
+    <ul id="autocompleteList" class="autocomplete-items"></ul>
 
     <div class="button-row">
-      <button data-page="main">Назад</button>
+      <button data-page="main" type="button">Назад</button>
       <button type="submit">Увійти</button>
     </div>
 
