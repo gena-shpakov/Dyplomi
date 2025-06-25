@@ -248,11 +248,21 @@ input::placeholder {
     padding: 4px 8px;
   }
 }
-.lecturerName{
+.lecturerName {
   position: absolute;
   top: 20px;
   left: 20px;
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+}
+
+.weekTypeLecturer {
+  position: absolute;
+  top: 1000px;
+  left: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  font-weight: 500;
   color: #333;
 }
