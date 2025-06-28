@@ -51,10 +51,14 @@ export default function () {
     e.preventDefault();
 
     const teacher = teacherInput.value.trim();
-    const found = allTeachers.includes(teacher);
 
-    if (!found) {
-      errorMsg.textContent = "Будь ласка, оберіть викладача зі списку.";
+    if (!teacher) {
+      errorMsg.textContent = "Будь ласка, введіть прізвище викладача.";
+      return;
+    }
+
+    if (!allTeachers.includes(teacher)) {
+      errorMsg.textContent = "Викладача з таким прізвищем не знайдено.";
       return;
     }
 
@@ -62,3 +66,15 @@ export default function () {
     render("lecturer"); // Перехід до сторінки з розкладом викладача
   });
 }
+
+filtered.forEach((name) => {
+  const li = document.createElement("li");
+  const regex = new RegExp(`(${query})`, "gi");
+  li.innerHTML = name.replace(regex, "<strong>$1</strong>");
+  li.classList.add("autocomplete-item");
+  li.addEventListener("click", () => {
+    teacherInput.value = name;
+    autocompleteList.innerHTML = "";
+  });
+  autocompleteList.appendChild(li);
+});
