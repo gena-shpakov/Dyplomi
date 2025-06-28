@@ -66,15 +66,3 @@ export default function () {
     render("lecturer"); // Перехід до сторінки з розкладом викладача
   });
 }
-
-filtered.forEach((name) => {
-  const li = document.createElement("li");
-  const regex = new RegExp(`(${query})`, "gi");
-  li.innerHTML = name.replace(regex, "<strong>$1</strong>");
-  li.classList.add("autocomplete-item");
-  li.addEventListener("click", () => {
-    teacherInput.value = name;
-    autocompleteList.innerHTML = "";
-  });
-  autocompleteList.appendChild(li);
-});
