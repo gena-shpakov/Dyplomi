@@ -105,10 +105,12 @@ select {
   background-size: 16px 16px;
 }
 input {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  padding: 10px;
+  border: none;
+  background: none;
+  font-size: 25px;
+  padding: 10px 5px;
+  outline: none;
+  width: 100%;
 }
 .button-row{
   display: flex;
