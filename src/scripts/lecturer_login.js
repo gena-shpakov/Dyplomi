@@ -13,18 +13,12 @@ export default function () {
   // Отримати список викладачів з GAS
   google.script.run
     .withSuccessHandler((data) => {
-      teacherSelect.innerHTML = "";
-      data.teachers.forEach((teacher) => {
-        const option = document.createElement("option");
-        option.value = teacher;
-        option.textContent = teacher;
-        teacherSelect.appendChild(option);
-      });
+      allTeachers = data.teachers || [];
     })
     .getLoginOptions();
 
-
-    teacherInput.addEventListener("input", () => {
+  // Автозаповнення
+  teacherInput.addEventListener("input", () => {
     const query = teacherInput.value.toLowerCase().trim();
     autocompleteList.innerHTML = "";
 
@@ -52,15 +46,15 @@ export default function () {
     }, 150);
   });
 
-
   // Обробка форми
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const teacher = teacherSelect.value;
+    const teacher = teacherInput.value.trim();
+    const found = allTeachers.includes(teacher);
 
-    if (!teacher) {
-      errorMsg.textContent = "Будь ласка, оберіть викладача.";
+    if (!found) {
+      errorMsg.textContent = "Будь ласка, оберіть викладача зі списку.";
       return;
     }
 
