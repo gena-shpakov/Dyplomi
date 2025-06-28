@@ -105,13 +105,10 @@ select {
   background-size: 16px 16px;
 }
 input {
-  border: none;
-  border-bottom: 1px solid #333;
-  background: none;
-  font-size: 25px;
-  padding: 10px 5px;
-  outline: none;
-  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 10px;
 }
 
 input::placeholder {
