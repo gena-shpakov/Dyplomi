@@ -17,15 +17,11 @@ export default function () {
     })
     .getLoginOptions();
 
-  // Автозаповнення
-  teacherInput.addEventListener("input", () => {
-    const query = teacherInput.value.toLowerCase().trim();
+  // Функція рендеру підказок
+  function showSuggestions(query = "") {
     autocompleteList.innerHTML = "";
-
-    if (!query) return;
-
     const filtered = allTeachers.filter((teacher) =>
-      teacher.toLowerCase().includes(query)
+      teacher.toLowerCase().includes(query.toLowerCase().trim())
     );
 
     filtered.forEach((name) => {
@@ -38,8 +34,19 @@ export default function () {
       });
       autocompleteList.appendChild(li);
     });
+  }
+
+  // Показати список одразу при фокусі
+  teacherInput.addEventListener("focus", () => {
+    showSuggestions(); // Показати повний список
   });
 
+  // Фільтрувати список при введенні
+  teacherInput.addEventListener("input", () => {
+    showSuggestions(teacherInput.value);
+  });
+
+  // Закрити список при втраті фокусу
   teacherInput.addEventListener("blur", () => {
     setTimeout(() => {
       autocompleteList.innerHTML = "";
