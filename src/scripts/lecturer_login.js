@@ -36,8 +36,16 @@ export default function () {
     });
   }
 
-  teacherInput.addEventListener("focus", () => showSuggestions());
-  teacherInput.addEventListener("input", () => showSuggestions(teacherInput.value));
+  teacherInput.addEventListener("focus", () => {
+    if (teacherInput.value.trim() === "") {
+      showSuggestions();
+    }
+  });
+
+  teacherInput.addEventListener("input", () => {
+    showSuggestions(teacherInput.value);
+  });
+  
   teacherInput.addEventListener("blur", () => {
     setTimeout(() => (autocompleteList.innerHTML = ""), 150);
   });
