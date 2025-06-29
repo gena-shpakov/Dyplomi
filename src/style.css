@@ -270,6 +270,7 @@ input::placeholder{
   padding: 5px 0;
   max-height: 150px;
   overflow-y: auto;
+  overflow-x: hidden;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #fff;

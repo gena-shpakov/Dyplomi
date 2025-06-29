@@ -6,20 +6,20 @@ export default function () {
 
   let allTeachers = [];
 
-  document
-    .querySelector('[data-page="main"]')
-    .addEventListener("click", () => render("main"));
+  // Повернення на головну
+  document.querySelector('[data-page="main"]').addEventListener("click", () => {
+    if (typeof render === "function") render("main");
+  });
 
-  // Отримати список викладачів з GAS
-  google.script.run
-    .withSuccessHandler((data) => {
-      allTeachers = data.teachers || [];
-    })
-    .getLoginOptions();
+  // Отримання списку викладачів із Google Apps Script
+  google.script.run.withSuccessHandler((data) => {
+    allTeachers = data.teachers || [];
+  }).getLoginOptions();
 
-  // Функція рендеру підказок
+  // Показати підказки
   function showSuggestions(query = "") {
     autocompleteList.innerHTML = "";
+
     const filtered = allTeachers.filter((teacher) =>
       teacher.toLowerCase().includes(query.toLowerCase().trim())
     );
@@ -36,27 +36,14 @@ export default function () {
     });
   }
 
-  // Показати список одразу при фокусі
-  teacherInput.addEventListener("focus", () => {
-    showSuggestions(); // Показати повний список
-  });
-
-  // Фільтрувати список при введенні
-  teacherInput.addEventListener("input", () => {
-    showSuggestions(teacherInput.value);
-  });
-
-  // Закрити список при втраті фокусу
+  teacherInput.addEventListener("focus", () => showSuggestions());
+  teacherInput.addEventListener("input", () => showSuggestions(teacherInput.value));
   teacherInput.addEventListener("blur", () => {
-    setTimeout(() => {
-      autocompleteList.innerHTML = "";
-    }, 150);
+    setTimeout(() => (autocompleteList.innerHTML = ""), 150);
   });
 
-  // Обробка форми
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-
     const teacher = teacherInput.value.trim();
 
     if (!teacher) {
@@ -70,6 +57,6 @@ export default function () {
     }
 
     localStorage.setItem("teacher", teacher);
-    render("lecturer"); // Перехід до сторінки з розкладом викладача
+    if (typeof render === "function") render("lecturer");
   });
 }
