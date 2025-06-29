@@ -264,23 +264,33 @@ input::placeholder{
   font-weight: 500;
   color: #333;
 }
+.autocomplete-wrapper {
+  position: relative;
+  width: 100%;
+}
+#teacherInput {
+  border: none;
+  background: none;
+  font-size: 25px;
+  padding: 10px 5px;
+  outline: none;
+  width: 100%;
+  z-index: 2;
+}
 .autocomplete-items {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   list-style: none;
-  margin-top: 5px;
+  margin: 0;
   padding: 5px 0;
   max-height: 150px;
   overflow-y: auto;
-  overflow-x: hidden;
   border: 1px solid #ccc;
-  border-radius: 8px;
   background-color: #fff;
-  position: absolute;
-  width: 90%;
-  max-width: 300px;
-  z-index: 1000;
+  z-index: 999;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .autocomplete-item {

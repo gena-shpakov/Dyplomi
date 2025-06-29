@@ -3,8 +3,10 @@
 
   <form id="lecturerLoginForm" class="login-form" autocomplete="off">
     <label for="teacherInput">Оберіть або введіть викладача:</label>
-    <input type="text" id="teacherInput" placeholder="Почніть вводити ім'я викладача...">
-    <ul id="autocompleteList" class="autocomplete-items"></ul>
+    <div class="autocomplete-wrapper">
+      <input type="text" id="teacherInput" placeholder="Почніть вводити ім'я викладача...">
+      <ul id="autocompleteList" class="autocomplete-items"></ul>
+    </div>
 
     <div class="button-row">
       <button data-page="main" type="button">Назад</button>
