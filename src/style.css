@@ -23,6 +23,8 @@ h1 {
   font-size: 55px;
   margin-bottom: 200px;
   letter-spacing: 5px;
+  text-align: center;
+  width: 100%;
 }
 
 .menu{
