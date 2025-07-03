@@ -1,7 +1,7 @@
 export default function () {
   const lecturerName = localStorage.getItem("teacher");
   document.getElementById("lecturerName").textContent = lecturerName
-    ? `Викладач: ${lecturerName}`
+    ? `Викладач - ${lecturerName}`
     : "Викладач не вказаний";
 
   const weekType = getWeekType();
