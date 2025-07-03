@@ -55,6 +55,11 @@ export default function () {
     showSuggestions(teacherInput.value);
     error.style.display = "none";
   });
+
+    const value = teacherInput.value.trim();
+    if (value && allTeachers.includes(value)) {
+      errorMsg.style.display = "none";
+    }
   
   teacherInput.addEventListener("blur", () => {
     setTimeout(() => (autocompleteList.innerHTML = ""), 150);
