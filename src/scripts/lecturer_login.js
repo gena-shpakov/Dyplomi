@@ -24,6 +24,12 @@ export default function () {
       teacher.toLowerCase().includes(query.toLowerCase().trim())
     );
 
+    if (filtered.length === 0) {
+      autocompleteList.classList.add("hidden");
+      return;
+    }
+
+    autocompleteList.classList.remove("hidden");
     filtered.forEach((name) => {
       const li = document.createElement("li");
       li.textContent = name;

@@ -309,3 +309,7 @@ input::placeholder{
   background-color: #ffe0b2;
 }
 
+.autocomplete-items.hidden {
+  display: none;
+}
+
