@@ -6,6 +6,8 @@ export default function () {
 
   let allTeachers = [];
 
+  errorMsg.style.display = "none";
+
   // Повернення на головну
   document.querySelector('[data-page="main"]').addEventListener("click", () => {
     if (typeof render === "function") render("main");
@@ -37,6 +39,7 @@ export default function () {
       li.addEventListener("click", () => {
         teacherInput.value = name;
         autocompleteList.innerHTML = "";
+        errorMsg.style.display = "none";
       });
       autocompleteList.appendChild(li);
     });
@@ -50,6 +53,7 @@ export default function () {
 
   teacherInput.addEventListener("input", () => {
     showSuggestions(teacherInput.value);
+    error.style.display = "none";
   });
   
   teacherInput.addEventListener("blur", () => {
@@ -70,6 +74,7 @@ export default function () {
       return;
     }
 
+    errorMsg.style.display = "none";
     localStorage.setItem("teacher", teacher);
     if (typeof render === "function") render("lecturer");
   });
