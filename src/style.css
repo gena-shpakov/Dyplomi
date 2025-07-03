@@ -83,27 +83,32 @@ label{
   text-align: left;
 }
 select {
-  border: none;
-  border-bottom: 1px solid #333;
-  background: none;
-  font-size: 25px;
-  padding: 10px 5px;
+  border: 2px solid #A64B2A;
+  border-radius: 8px;
+  background-color: #fff5eb;
+  font-size: 20px;
+  padding: 12px 40px 12px 15px;
   outline: none;
   width: 100%;
   color: #333;
   appearance: none;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   cursor: pointer;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
   background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 16px 16px;
+  background-position: right 12px center;
+  background-size: 20px 20px;
 }
+select:hover{
+  border-color: #8A3A1A;
+}
+select:focus{
+  box-shadow: 0 0 5px rgba(166, 75, 42, 0.5);
+  border-color: #A64B2A;
+}
+
+
 input {
   border: none;
   background: none;
