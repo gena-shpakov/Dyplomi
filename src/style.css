@@ -221,6 +221,7 @@ input::placeholder{
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 9999;
+  padding-top: 100px; 
 }
 .bell{
   width: 200px;
