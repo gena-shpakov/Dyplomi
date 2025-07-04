@@ -312,7 +312,7 @@ input::placeholder{
   list-style: none;
   margin: 0;
   padding: 5px 0;
-  max-height: 150px;
+  max-height: 150px !important;
   overflow-y: auto;
   border: 1px solid #ccc;
   background-color: #fff;
