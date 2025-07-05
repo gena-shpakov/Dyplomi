@@ -10,6 +10,13 @@ export default function () {
     weekTypeElement.textContent = `Зараз: ${weekType}`;
   }
 
+  const currentDayElement = document.getElementById("currrentDay");
+  if (currentDayElement) {
+    const dayNames = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П’ятниця", "Субота"];
+    const today = new Date().getDay();
+    currentDayElement.textContent = dayNames[today];
+  }
+
   const table = document.getElementById("lecturerscheduleTable");
   const tbody = table.querySelector("tbody");
 
